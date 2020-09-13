@@ -1,0 +1,27 @@
+{% extends 'base.html' %} 
+
+{% block head %}
+
+    <title>Update</title>
+
+{% endblock %} 
+
+{% block body %} 
+<div class="row">
+    <div class="col">
+        
+        <h2>Tasks</h2>
+
+        <form action="/update/{{ task.id }}" method="POST">
+            <div class="form-group">
+                <label  for="content">Task:</label>
+                <input class="form-control" type="text" name="content" id="content" value="{{ task.content }}">
+            </div>            
+            <button class="btn btn-primary" type="submit">Save</button>                        
+        </form>
+
+                
+    </div>        
+</div>
+
+{% endblock %}

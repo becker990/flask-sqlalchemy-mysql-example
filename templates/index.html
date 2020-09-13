@@ -1,0 +1,52 @@
+{% extends 'base.html' %} 
+
+{% block head %}
+
+    <title>Tasks</title>
+
+{% endblock %} 
+
+{% block body %} 
+<div class="row">
+    <div class="col">
+        
+        <h2>Tasks</h2>
+
+        <form action="/" method="POST">
+            <div class="form-group">
+                <label  for="content">Task:</label>
+                <input class="form-control" type="text" name="content" id="content">
+            </div>            
+            <button class="btn btn-primary" type="submit">Save</button>                        
+        </form>
+
+        <hr>
+        <table class="table table-dark table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Task id</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Controls</th>
+                </tr>
+            </thead>       
+            <tbody>
+                {% for i in tasks %}
+                <tr>
+                    <th scope="row"> {{ i.id }}</th>
+                    <td> {{ i.content }}</td>
+                    <td> {{ i.completed }}</td>
+                    <td> {{ i.created.date() }}</td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" href="/delete/{{ i.id }}">Delete</a>
+                        <a class="btn btn-sm btn-primary"href="/update/{{ i.id }}">Update</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>           
+        </table>
+    </div>        
+</div>
+
+{% endblock %}
